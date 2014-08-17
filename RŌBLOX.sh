@@ -1,8 +1,8 @@
-RŌBLOXForLinux
-==============
-
-This is the RŌBLOX that can be ran by Wine. ALL CREDIT GIVEN TO Jonathan Alfonso <alfonsojon1997@gmail.com>
-
+#RŌBLOXForLinux
+#==============
+#
+#This is the RŌBLOX that can be ran by Wine. ALL CREDIT GIVEN TO Jonathan Alfonso <alfonsojon1997@gmail.com>
+#
 export RLWVERSION=2.0.2
 export RLWCHANNEL=STABLE
 export WINEPREFIX=$HOME/.local/share/wineprefixes/Roblox

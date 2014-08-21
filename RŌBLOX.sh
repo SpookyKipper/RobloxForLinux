@@ -10,7 +10,7 @@ export WINETRICKSDEV=/tmp/winetricks
 export WINEARCH=win32
 export WINEDLLOVERRIDES=winebrowser.exe,winemenubuilder.exe=
 
-echo 'Roblox Linux Wrapper v'$RLWVERSION'-'$RLWCHANNEL
+echo 'RŌBLOX Linux Wrapper v'$RLWVERSION'-'$RLWCHANNEL
 
 removeicons () {
 	if [[ -e $HOME/Desktop/ROBLOX\ Player.desktop ]] || [[ -e $HOME/Desktop/ROBLOX\ Player.lnk ]]; then
@@ -29,7 +29,7 @@ removeicons () {
 spawndialog () {
 	zenity \
 		--window-icon=$RBXICON \
-		--title='Roblox Linux Wrapper v'$RLWVERSION'-'$RLWCHANNEL \
+		--title='RŌBLOX Linux Wrapper v'$RLWVERSION'-'$RLWCHANNEL \
 		--$1 \
 		--no-wrap \
 		--text="$2"
@@ -41,7 +41,7 @@ download () {
 	zenity \
 		--progress \
 		--window-icon=$RBXICON \
-		--title='Downloading' \
+		--title='Pooping...' \
 		--auto-close \
 		--no-cancel \
 		--width=450 \
@@ -99,8 +99,8 @@ depcheck () {
 			--auto-close
 		wine /tmp/RobloxPlayerLauncher.exe | zenity \
 			--window-icon=$RBXICON \
-			--title='Installing Roblox' \
-			--text='Installing Roblox ...' \
+			--title='Installing RŌBLOX' \
+			--text='Installing RŌBLOX ...' \
 			--progress \
 			--pulsate \
 			--no-cancel \
@@ -112,7 +112,7 @@ depcheck () {
 		wine /tmp/Firefox-Setup-31.0esr.exe /SD | zenity \
 			--window-icon=$RBXICON \
 			--title='Installing Mozilla Firefox' \
-			--text='Installing Mozilla Firefox 31.0 ESR ...' \
+			--text='Installing a new browser because NetSurf sucks ...' \
 			--progress \
 			--pulsate \
 			--no-cancel \
@@ -125,7 +125,7 @@ playerwrapper () {
 	if [[ $1 = legacy ]]; then
 		export GAMEURL=`\
 		zenity \
-			--title='Roblox Linux Wrapper v'$RLWVERSION'-'$RLWCHANNEL \
+			--title='RŌBLOX Linux Wrapper' \
 			--window-icon=$RBXICON \
 			--entry \
 			--text='Paste the URL for the game here.' \
@@ -137,8 +137,8 @@ playerwrapper () {
 			wine "`find $WINEPREFIX -name RobloxPlayerBeta.exe`" --id $GAMEID | \
 			zenity \
 				--window-icon=$WINEPREFIX/ROBLOX-Circle-Logo1.png \
-				--title='ROBLOX' \
-				--text='Starting ROBLOX Player...' \
+				--title='RŌBLOX' \
+				--text='Starting RŌBLOX Player...' \
 				--progress \
 				--pulsate \
 				--auto-close \
@@ -159,8 +159,8 @@ studiowrapper () {
 	if [[ "`find $WINEPREFIX -name RobloxStudioBeta.exe`" = '' ]]; then
 		wine "`find $WINEPREFIX -name RobloxStudioLauncherBeta.exe`" | zenity \
 			--window-icon=$WINEPREFIX/ROBLOX-Circle-Logo1.png \
-			--title='ROBLOX' \
-			--text='Installing ROBLOX Studio ...' \
+			--title='RŌBLOX' \
+			--text='Installing RŌBLOX Studio ...' \
 			--progress \
 			--pulsate \
 			--auto-close \
@@ -172,8 +172,8 @@ studiowrapper () {
 	fi
 	wine "`find $WINEPREFIX -name RobloxStudioBeta.exe`" | zenity \
 		--window-icon=$WINEPREFIX/ROBLOX-Circle-Logo1.png \
-		--title='ROBLOX' \
-		--text='Starting ROBLOX Studio ...' \
+		--title='RŌBLOX' \
+		--text='Starting RŌBLOX Studio ...' \
 		--progress \
 		--pulsate \
 		--auto-close \
@@ -185,39 +185,39 @@ studiowrapper () {
 
 main () {
 	if [[ -d "$HOME/.rlw" ]]; then
-		export RLW_INSTALL_OPT='Uninstall Roblox Linux Wrapper'
+		export RLW_INSTALL_OPT='Uninstall RŌBLOX Linux Wrapper'
 	else
-		export RLW_INSTALL_OPT='Install Roblox Linux Wrapper (Recommended)'
+		export RLW_INSTALL_OPT='Install RŌBLOX Linux Wrapper'
 	fi
 	sel=`zenity \
-		--title='ROBLOX Linux Wrapper' \
+		--title='RŌBLOX Linux Wrapper' \
 		--window-icon=$RBXICON \
 		--width=480 \
 		--height=238 \
-		--cancel-label='Quit' \
+		--cancel-label='Close' \
 		--list \
 		--text 'Select a choice.' \
 		--radiolist \
 		--column '' \
 		--column 'Options' \
-		TRUE 'Play Roblox' \
-		FALSE 'Play Roblox (Legacy Mode)' \
-		FALSE 'Roblox Studio' \
+		TRUE 'Play RŌBLOX' \
+		FALSE 'Play RŌBLOX directly' \
+		FALSE 'RŌBLOX Studio' \
 		FALSE "$RLW_INSTALL_OPT" \
-		FALSE 'Reset Roblox to defaults' \
-		FALSE 'Uninstall Roblox' `
+		FALSE 'Reset RŌBLOX to defaults' \
+		FALSE 'Uninstall RŌBLOX' `
 	case $sel in
-	'Play Roblox')
+	'Play RŌBLOX')
 		playerwrapper; main;;
-	'Play Roblox (Legacy Mode)')
+	'Play RŌBLOX directly')
 		playerwrapper legacy; main;;
-	'Roblox Studio')
+	'RŌBLOX Studio')
 		studiowrapper; main;;
-	'Install Roblox Linux Wrapper (Recommended)')
+	'Install RŌBLOX Linux Wrapper')
 		cat <<-EOF > $HOME/.local/share/applications/Roblox.desktop
 		[Desktop Entry]
-		Comment=Play Roblox
-		Name=Roblox Linux Wrapper
+		Comment=Play RŌBLOX
+		Name=RŌBLOX Linux Wrapper
 		Exec=$HOME/.rlw/rlw-stub.sh
 		Actions=RFAGroup;ROLWiki;
 		GenericName=Building Game
@@ -230,8 +230,8 @@ main () {
 		Exec=xdg-open 'http://roblox.wikia.com/wiki/Roblox_On_Linux'
 
 		[Desktop Action RFAGroup]
-		Name='Roblox for All'
-		Exec=xdg-open 'http://www.roblox.com/Groups/group.aspx?gid=292611'
+		Name='Nooby Co.'
+		Exec=xdg-open 'http://www.roblox.com/Groups/group.aspx?gid=1121845'
 		EOF
 		mkdir $HOME/.rlw
 		download https://raw.githubusercontent.com/alfonsojon/roblox-linux-wrapper/master/rlw.sh $HOME/.rlw/rlw.sh
@@ -243,12 +243,12 @@ main () {
 		xdg-desktop-menu install --novendor $HOME/.local/share/applications/Roblox.desktop
 		xdg-desktop-menu forceupdate
 		if [[ -f $HOME/.rlw/rlw-stub.sh && -f $HOME/.rlw/rlw.sh && -f $HOME/.local/share/icons/roblox.png && -f $HOME/.local/share/applications/Roblox.desktop ]]; then
-			spawndialog info 'Roblox Linux Wrapper was installed successfully.'
+			spawndialog info 'RŌBLOX Linux Wrapper was installed successfully.'
 		else
-			spawndialog error 'Roblox Linux Wrapper did not install successfully.\nPlease ensure you are connected to the internet and try again.'
+			spawndialog error 'RŌBLOX Linux Wrapper did not install successfully.\nPlease ensure you are connected to the internet and try again.'
 		fi
 		main;;
-	'Uninstall Roblox Linux Wrapper')
+	'Uninstall RŌBLOX Linux Wrapper')
 		xdg-desktop-menu uninstall $HOME/.local/share/applications/Roblox.desktop
 		rm -rf $HOME/.rlw
 		if [[ -e $HOME/.local/share/icons/roblox.png ]]; then
@@ -257,15 +257,15 @@ main () {
 		rm -rf $HOME/.local/share/icons/hicolor/512x512/apps/roblox.png
 		xdg-desktop-menu forceupdate
 		if [[ -d $HOME/.rlw ]] || [[ -e $HOME/.local/share/icons/hicolor/512x512/apps/roblox.png ]]; then
-			spawndialog error 'Roblox Linux Wrapper is still installed. Please try uninstalling again.'
+			spawndialog error 'RŌBLOX Linux Wrapper is still installed. Please try uninstalling again.'
 		else
-			spawndialog info 'Roblox Linux Wrapper has been uninstalled successfully.'
+			spawndialog info 'RŌBLOX Linux Wrapper has been uninstalled successfully.'
 		fi
 		main;;
-	'Reset Roblox to defaults')
+	'Reset RŌBLOX to defaults')
 		rm -rf $WINEPREFIX;
 		depcheck; main;;
-	'Uninstall Roblox')
+	'Uninstall RŌBLOX')
 		if [[ -e $WINEPREFIX ]]; then
 			wineserver -k; rm -rf $WINEPREFIX; removeicons; spawndialog info 'Roblox has been uninstalled successfully.'
 		fi
